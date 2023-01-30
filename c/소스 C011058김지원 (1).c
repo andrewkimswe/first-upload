@@ -5,34 +5,34 @@
 #define WEEKS 15
 #define STUDENTS 10
 
-// ±¸Á¶Ã¼
+// êµ¬ì¡°ì²´
 struct score {
-	int score_mid; // ½ÃÇè1 Á¡¼ö
-	int score_final; // ½ÃÇè2 Á¡¼ö
-	int score_project; // °úÁ¦ Á¡¼ö
-	int score_attend; // Ãâ¼® Á¡¼ö
-	int score_result; // ÃÑÇÕ
+	int score_mid; // ì‹œí—˜1 ì ìˆ˜
+	int score_final; // ì‹œí—˜2 ì ìˆ˜
+	int score_project; // ê³¼ì œ ì ìˆ˜
+	int score_attend; // ì¶œì„ ì ìˆ˜
+	int score_result; // ì´í•©
 };
 
 struct student {
-	char name[100]; // ÀÌ¸§
-	int attendance[WEEKS]; // Ãâ°á
-	struct score s; // Á¡¼ö
+	char name[100]; // ì´ë¦„
+	int attendance[WEEKS]; // ì¶œê²°
+	struct score s; // ì ìˆ˜
 	int rank;
 	char grade[5]; // GPA
 };
 
-// ±¸Á¶Ã¼ º¯¼ö ¼±¾ğ
+// êµ¬ì¡°ì²´ ë³€ìˆ˜ ì„ ì–¸
 struct student list[STUDENTS];
 
-// ÇÔ¼ö ¿øÇü
-void get_name(void); // ÇĞ»ı ÀÌ¸§À» ÀÔ·Â¹Ş´Â ÇÔ¼ö(N=10)
-void get_attendance(void); // ÇĞ»ı Ãâ¼® ±â·Ï(1-15ÁÖÂ÷)À» ÀÔ·Â¹Ş´Â ÇÔ¼ö
-void attendance_to_score(void); // Ãâ¼® ±â·ÏÀ» Ãâ¼® Á¡¼ö·Î º¯È¯ÇÏ´Â ÇÔ¼ö
-void get_score(void); // ÇĞ»ı Á¡¼ö(½ÃÇè1, ½ÃÇè2, °úÁ¦, Ãâ¼®)À» ÇÕÄ¡´Â ÇÔ¼ö
-void calculate_rank(void); // Á¡¼ö¸¦ (¼±ÅÃ)Á¤·ÄÇÏ°í ¼øÀ§¸¦ ¸Å±â´Â ÇÔ¼ö
-void rank_to_GPA(void); // ¼øÀ§¸¦ GPA·Î º¯È¯ÇÏ´Â ÇÔ¼ö(¼øÂ÷ Å½»ö È°¿ë)
-void ret_GPA(void); // ÇĞ»ıÀÇ Á¡¼ö¿Í GPA¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö
+// í•¨ìˆ˜ ì›í˜•
+void get_name(void); // í•™ìƒ ì´ë¦„ì„ ì…ë ¥ë°›ëŠ” í•¨ìˆ˜(N=10)
+void get_attendance(void); // í•™ìƒ ì¶œì„ ê¸°ë¡(1-15ì£¼ì°¨)ì„ ì…ë ¥ë°›ëŠ” í•¨ìˆ˜
+void attendance_to_score(void); // ì¶œì„ ê¸°ë¡ì„ ì¶œì„ ì ìˆ˜ë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜
+void get_score(void); // í•™ìƒ ì ìˆ˜(ì‹œí—˜1, ì‹œí—˜2, ê³¼ì œ, ì¶œì„)ì„ í•©ì¹˜ëŠ” í•¨ìˆ˜
+void calculate_rank(void); // ì ìˆ˜ë¥¼ (ì„ íƒ)ì •ë ¬í•˜ê³  ìˆœìœ„ë¥¼ ë§¤ê¸°ëŠ” í•¨ìˆ˜
+void rank_to_GPA(void); // ìˆœìœ„ë¥¼ GPAë¡œ ë³€í™˜í•˜ëŠ” í•¨ìˆ˜(ìˆœì°¨ íƒìƒ‰ í™œìš©)
+void ret_GPA(void); // í•™ìƒì˜ ì ìˆ˜ì™€ GPAë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
 
 int main(void) {
 
@@ -56,7 +56,7 @@ int main(void) {
 void get_name(void) {
 
 	for (int i = 0; i < STUDENTS; i++) {
-		printf("ÇĞ»ı ÀÌ¸§À» ÀÔ·ÂÇÏ½Ã¿À : ");
+		printf("í•™ìƒ ì´ë¦„ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
 		scanf("%s", &list[i].name);
 	}
 }
@@ -64,7 +64,7 @@ void get_name(void) {
 void get_attendance(void) {
 
 	for (int j = 0; j < WEEKS; j++) {
-		printf("%dÁÖÂ÷ Ãâ°áÀ» ÀÔ·ÂÇÏ½Ã¿À(Ãâ¼® 0, °á¼® 1)\n", j + 1);
+		printf("%dì£¼ì°¨ ì¶œê²°ì„ ì…ë ¥í•˜ì‹œì˜¤(ì¶œì„ 0, ê²°ì„ 1)\n", j + 1);
 
 		for (int i = 0; i < STUDENTS; i++) {
 			printf("%s : ", list[i].name);
@@ -87,22 +87,22 @@ void attendance_to_score(void) {
 void get_score(void) {
 
 	for (int i = 0; i < STUDENTS; i++) {
-		printf("%sÀÇ ½ÃÇè1, ½ÃÇè2, °úÁ¦ ¼ºÀûÀ» ÀÔ·ÂÇÏ½Ã¿À\n", list[i].name);
+		printf("%sì˜ ì‹œí—˜1, ì‹œí—˜2, ê³¼ì œ ì„±ì ì„ ì…ë ¥í•˜ì‹œì˜¤\n", list[i].name);
 
-		printf("½ÃÇè1 :");
+		printf("ì‹œí—˜1 :");
 		scanf("%d", &list[i].s.score_mid);
 
-		printf("½ÃÇè2 :");
+		printf("ì‹œí—˜2 :");
 		scanf("%d", &list[i].s.score_final);
 
-		printf("½ÃÇè3 :");
+		printf("ì‹œí—˜3 :");
 		scanf("%d", &list[i].s.score_project);
 
 		list[i].s.score_result = list[i].s.score_attend + list[i].s.score_mid + list[i].s.score_final + list[i].s.score_project;
 	}
 }
 
-// Selection Sort & Sequential Search »ç¿ë
+// Selection Sort & Sequential Search ì‚¬ìš©
 void calculate_rank(void) {
 
 	int local_arr[STUDENTS];
@@ -169,7 +169,7 @@ void rank_to_GPA(void) {
 
 void ret_GPA(void) {
 
-	printf("ÀÌ¸§\t Á¡¼ö\t ÆòÁ¡\n");
+	printf("ì´ë¦„\t ì ìˆ˜\t í‰ì \n");
 
 	for (int i = 0; i < STUDENTS; i++) {
 		printf("%s \t", list[i].name);
